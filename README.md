@@ -16,9 +16,9 @@ cd RL-Quadcopter-2
 2. Create and activate a new environment.
 
 ```
-conda create -n quadcop python=3.6 matplotlib numpy pandas keras
-conda install -y --file requirements.txt
+conda create -y -n quadcop python=3.6 matplotlib numpy pandas keras
 source activate quadcop
+conda install -y --file requirements.txt
 ```
 
 3. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `quadcop` environment.
@@ -30,6 +30,11 @@ python -m ipykernel install --user --name quadcop --display-name "quadcop"
 ```
 jupyter notebook Quadcopter_Project.ipynb
 ```
+Running notebook remotely on a headless server.
+```
+jupyter notebook --ip=0.0.0.0 --no-browser Quadcopter_Project.ipynb
+```
+
 
 5. Before running code, change the kernel to match the `quadcop` environment by using the drop-down menu (**Kernel > Change kernel > quadcop**). Then, follow the instructions in the notebook.
 
