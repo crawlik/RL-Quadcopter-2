@@ -1,5 +1,6 @@
 import numpy as np
 from physics_sim import PhysicsSim
+import math
 
 class Task():
     """Task (environment) that defines the goal and provides feedback to the agent."""
@@ -29,6 +30,14 @@ class Task():
     def get_reward(self):
         """Uses current pose of sim to return reward."""
         reward = 1.-.3*(abs(self.sim.pose[:3] - self.target_pos)).sum()
+        # penalty for non 0 Euler angles, quadcopter needs to be horizonal
+        reward += -0.1 * abs(self.sim.pose[3:]).sum()
+        # penalty for non 0 velocities
+        #reward += -0.3 * abs(self.sim.v).sum() 
+             
+        # normalize
+        #reward = np.clip(reward, -1, 1)
+        
         return reward
 
     def step(self, rotor_speeds):
@@ -46,4 +55,5 @@ class Task():
         """Reset the sim to start a new episode."""
         self.sim.reset()
         state = np.concatenate([self.sim.pose] * self.action_repeat) 
+                
         return state
