@@ -16,7 +16,7 @@ cd RL-Quadcopter-2
 2. Create and activate a new environment.
 
 ```
-conda create -y -n quadcop python=3.6 matplotlib numpy pandas keras
+conda create -y -n quadcop python=3.6
 source activate quadcop
 conda install -y --file requirements.txt
 ```
