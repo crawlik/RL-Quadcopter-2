@@ -6,7 +6,7 @@ class OUNoise:
 
     def __init__(self, size, mu, theta, sigma):
         """Initialize parameters and noise process."""
-        np.random.seed(1000) # for reproducibility
+        np.random.seed(0) # for reproducibility
         self.mu = mu * np.ones(size)
         self.theta = theta
         self.sigma = sigma
